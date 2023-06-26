@@ -1,0 +1,73 @@
+<div class="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Atualizar Jogo</ion-title>
+      <ion-button (click)="goToHome()" color="tertiary"
+        ><ion-icon name="home-outline"></ion-icon
+      ></ion-button>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content [fullscreen]="true">
+    <form [formGroup]="gameForm">
+      <ion-item>
+        <ion-label>Nome: </ion-label>
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Censura: </ion-label>
+        <ion-select
+          formControlName="censorship"
+          label-placement="floating"
+          fill="solid"
+        >
+        <ion-select-option value="0">Livre</ion-select-option>
+          <ion-select-option value="10">10 Anos</ion-select-option>
+          <ion-select-option value="12">12 Anos</ion-select-option>
+          <ion-select-option value="16">16 Anos</ion-select-option>
+          <ion-select-option value="18">18 Anos</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Gênero: </ion-label>
+        <ion-input minlenght="10" formControlName="type"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Número de Jogadores: </ion-label>
+        <ion-select
+          formControlName="playerNumber"
+          label-placement="floating"
+          fill="solid"
+        >
+          <ion-select-option value="1">1</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="5">5</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-button 
+            type="submit" 
+            expand="block" 
+            (click)="updateGame()" 
+            color="tertiary"
+            >Atualizar</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </form>
+    <ion-toast
+    [isOpen]="isToastOpen"
+    message="Jogo Atualizado!"
+    [duration]="5000"
+  ></ion-toast>
+  </ion-content>
+</div>
+<ion-alert
+  [isOpen]="isAlertOpen"
+  header="Alerta"
+  message="{{errorMsg}}"
+  (didDismiss)="setOpen(false)"
+></ion-alert>

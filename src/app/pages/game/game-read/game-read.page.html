@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Jogos</ion-title>
+    <ion-button (click)="goToHome()" color="tertiary">
+      <ion-icon name="home-outline"></ion-icon>
+    </ion-button>
+    <ion-button (click)="goToAdd()" class="button-add" color="tertiary">
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row class="bold">
+      <ion-col>Nome</ion-col>
+      <ion-col>Censura</ion-col>
+      <ion-col>Tipo</ion-col>
+      <ion-col>Editar</ion-col>
+      <ion-col>Apagar</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let game of games">
+      <ion-col>{{game.name}}</ion-col>
+      <ion-col>{{game.censorship}}</ion-col>
+      <ion-col>{{game.type}}</ion-col>
+      <ion-col>
+        <ion-button (click)="goToUpdate(game.id)" color="warning">
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="deleteGame(game.id)" id="delete-alert" color="danger">
+          <ion-icon name="trash-bin"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid> 
+</ion-content>
+<ion-alert
+[isOpen]="isAlertOpen"
+header="Alerta"
+message="Falha ao salvar jogo, preencha os campos corretamente"
+(didDismiss)="setOpen(false)"
+></ion-alert>
+
+<ion-toast
+    [isOpen]="isToastOpen"
+    message="Jogo Deletado!"
+    [duration]="5000"
+  ></ion-toast>
+
+<ion-alert
+  trigger="delete-alert"
+  header="Jogo Excluído!"
+  [buttons]="alertButton"
+></ion-alert>

@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+    <ion-button (click)="goToHome()" color="tertiary"
+      ><ion-icon name="home-outline" ></ion-icon
+    ></ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Jogo: </ion-label>
+
+    <ion-select [(ngModel)]="selectedGameId"  placeholder="Selecione um jogo" (ionChange)="onGameChange($event)">
+     
+      <ion-select-option *ngFor="let game of games" [value]="game.id">{{game.name}}</ion-select-option>
+  
+    </ion-select>
+  </ion-item>
+  <ion-row>
+    <ion-col>
+    total de partidas: {{totalMatchs}}
+    </ion-col>
+  
+
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      Jogo
+    </ion-col>
+  
+    <ion-col>
+     Vencedor
+    </ion-col>
+  </ion-row>
+  <ion-row  *ngFor="let match of matchs"  > 
+    <ion-col>
+      {{match.game}}
+    </ion-col>
+  
+    <ion-col>
+      {{match.winner}}
+    </ion-col>
+ 
+  </ion-row>
+
+  
+</ion-content>
+<ion-alert
+[isOpen]="isAlertOpen"
+header="Falha ao carregar dados, preencha os campos corretamente!"
+message={{errorMsg}}
+(didDismiss)="setOpen(false)"
+></ion-alert>

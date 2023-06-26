@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Jogadores</ion-title>
+    <ion-button (click)="goToHome()" color="tertiary"
+      ><ion-icon name="home-outline"></ion-icon
+    ></ion-button>
+    <ion-button (click)=" goToAdd()" class="button-add" color="tertiary"
+      ><ion-icon name="add-circle-outline"></ion-icon
+    ></ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="2">Nickname</ion-col>
+      <ion-col size="3">Email</ion-col>
+      <ion-col size="3">Nome</ion-col>
+      <ion-col size="2">Editar</ion-col>
+      <ion-col size="2">Apagar</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let player of players">
+      <ion-col size="2">{{player.nickname}}</ion-col>
+      <ion-col size="3">{{player.email}}</ion-col>
+      <ion-col size="3">{{player.name}}</ion-col>
+      <ion-col size="2">
+        <ion-button (click)="goToUpdate(player.id)" color="warning" class="button-action">
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button (click)="deletePlayer(player.id)" color="danger" class="button-action">
+          <ion-icon name="trash-bin"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-toast
+  [isOpen]="isToastOpen"
+  message="Jogador Deletado!"
+  [duration]="5000"
+></ion-toast>
+</ion-content>
+<ion-alert
+  [isOpen]="isAlertOpen"
+  header="Alerta"
+  message="Falha ao retornar os jogadores"
+  (didDismiss)="setOpen(false)"
+></ion-alert>

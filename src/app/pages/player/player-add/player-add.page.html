@@ -1,0 +1,58 @@
+<div class="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Adicionar Jogador</ion-title>
+      <ion-button (click)="goToHome()" color="tertiary"><ion-icon name="home-outline"></ion-icon></ion-button>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content [fullscreen]="true">
+    <form [formGroup]="playerForm" (ngSubmit)="submitForm()" novalidate>
+      <ion-item>
+        <ion-label>Nickname: </ion-label>
+        <ion-input  minlenght="8"  formControlName="nickname" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Email: </ion-label>
+        <ion-input  minlenght="8"  formControlName="email" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Senha: </ion-label>
+        <ion-input minlenght="8" formControlName="password" type="password" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Data de Nascimento: </ion-label>
+        <ion-input formControlName="age" maxlength="10" mask="**/**/****"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Nome: </ion-label>
+        <ion-input minlenght="8"  formControlName="name" ></ion-input>
+      
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-button
+            type="submit"
+            expand="block"
+            (click)="createPlayer()"
+            color="tertiary"
+            >Avançar</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </form>
+    <ion-toast
+    [isOpen]="isToastOpen"
+    message="Jogador Criado!"
+    [duration]="5000"
+  ></ion-toast>
+  </ion-content>
+</div>
+<ion-alert
+  [isOpen]="isAlertOpen"
+  header="Falha ao salvar jogador, preencha os campos corretamente!"
+  message={{errorMsg}}
+
+  (didDismiss)="setOpen(false)"
+></ion-alert>
+

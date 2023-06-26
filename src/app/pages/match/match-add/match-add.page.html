@@ -1,0 +1,78 @@
+<div class="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Adicionar Partida</ion-title>
+      <ion-button (click)="goToHome()" color="tertiary"
+        ><ion-icon name="home-outline"></ion-icon
+      ></ion-button>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content [fullscreen]="true" *ngIf="players">
+    <form [formGroup]="matchForm" (ngSubmit)="submitForm()" novalidate>
+      <ion-item>
+        <ion-label>Jogo: </ion-label>
+        
+        <ion-select  formControlName="game"  placeholder="Selecione um jogo">
+         
+          <ion-select-option *ngFor="let game of games" [value]="game.id">{{game.name}}</ion-select-option>
+      
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Jogador 1: </ion-label>
+     
+        <ion-select  formControlName="player1"  placeholder="Selecione um jogador">
+         
+          <ion-select-option *ngFor="let player of players" [value]="player.id">{{player.nickname}}</ion-select-option>
+      
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Jogador 2: </ion-label> 
+     
+        <ion-select  formControlName="player2" placeholder="Selecione um jogador">
+         
+          <ion-select-option *ngFor="let player of players" [value]="player.id">{{player.nickname}}</ion-select-option>
+      
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Tempo partida (minutos): </ion-label>
+        <ion-input formControlName="time" type="number" maxlength="4"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Vencedor : </ion-label>
+        <ion-select  formControlName="winner"  placeholder="Selecione um jogador">
+         
+          <ion-select-option *ngFor="let player of players" [value]="player.id">{{player.nickname}}</ion-select-option>
+      
+        </ion-select>
+  
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-button
+            type="submit"
+            expand="block"
+            (click)="createMatch()"
+            color="tertiary"
+            >Salvar</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </form>
+    <ion-toast
+    [isOpen]="isToastOpen"
+    message="Partida Criada!"
+    [duration]="5000"
+    (didDismiss)="setOpenToast(false)"
+  ></ion-toast>
+  </ion-content>
+</div>
+<ion-alert
+  [isOpen]="isAlertOpen"
+  header="Falha ao salvar partida, preencha os campos corretamente!"
+  message={{errorMsg}}
+  (didDismiss)="setOpen(false)"
+></ion-alert>

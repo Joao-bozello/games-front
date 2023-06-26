@@ -1,0 +1,33 @@
+<div class="content">
+  <ion-content [fullscreen]="true">
+    <form >
+      <ion-item>
+        <ion-label>Email: </ion-label>
+        <ion-input [(ngModel)]="player.email" name="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Senha: </ion-label>
+        <ion-input [(ngModel)]="player.password"type="password" name="password"></ion-input>
+      </ion-item>
+
+      <ion-row>
+        <ion-col>
+          <ion-button
+          [disabled]="player.password.length==0 || player.email.length==0"
+            type="submit"
+            expand="block"
+          (click)="login()"
+            >Entrar</ion-button
+          >
+          
+        </ion-col>
+      </ion-row> 
+      <ion-row>
+        <a 
+        class="span"
+        (click)="goToCreatePlayer()"
+        >Clique aqui para cadastrar</a>
+      </ion-row>
+    </form>
+  </ion-content>
+</div>

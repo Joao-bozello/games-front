@@ -1,0 +1,58 @@
+<div class="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Editar Jogador</ion-title>
+      <ion-button (click)="goToHome()" color="tertiary">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-button>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content *ngIf="player" [fullscreen]="true">
+    <form [formGroup]="playerForm">
+      <ion-item>
+        <ion-label>Nickname: </ion-label>
+        <ion-input  minlenght="8"   formControlName="nickname"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Email: </ion-label>
+        <ion-input  minlenght="8"  formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Senha: </ion-label>
+        <ion-input minlenght="8" type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Data de Nascimento: </ion-label>
+        <ion-input type="txt" formControlName="birthday"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Nome: </ion-label>
+        <ion-input  minlenght="8"  formControlName="name"></ion-input>
+      
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-button
+            type="submit"
+            expand="block"
+            (click)="updatePlayer()"
+            color="tertiary"
+            >Atualizar</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </form>
+    <ion-toast
+    [isOpen]="isToastOpen"
+    message="Jogador Atualizado!"
+    [duration]="5000"
+  ></ion-toast>
+  </ion-content>
+</div>
+<ion-alert
+  [isOpen]="isAlertOpen"
+  header="Alerta"
+  message="{{errorMsg}}"
+  (didDismiss)="setOpen(false)"
+></ion-alert>
