@@ -87,7 +87,7 @@ export class GameAddPage implements OnInit {
         () => {
           this.loading.dismiss();
           this.isToastOpen = true;
-          setTimeout(()=>{this.route.navigate(['/home']);},500)
+          setTimeout(()=>{this.route.navigate(['/']);},500)
         },
         (err) => {
           this.loading.dismiss();

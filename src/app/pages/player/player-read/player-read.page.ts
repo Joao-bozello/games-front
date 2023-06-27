@@ -14,7 +14,7 @@ export class PlayerReadPage implements OnInit {
   players: any[] = [];
   isAlertOpen = false;
   isToastOpen = false;
-
+  errorMsg = "Falha ao retornar os jogadores"
   constructor(
     private playerService: PlayerService,
     private route: Router,
@@ -71,7 +71,8 @@ export class PlayerReadPage implements OnInit {
       (err) => {
         this.loading.dismiss();
         this.isAlertOpen = true;
-
+        this.errorMsg = "jogador registrado em  uma partida"
+        this.loading.dismiss();
         console.log(err);
       }
     );

@@ -35,11 +35,11 @@
   </ion-row>
   <ion-row  *ngFor="let match of matchs"  > 
     <ion-col>
-      {{match.game}}
+      {{match?.game?.name}}
     </ion-col>
   
     <ion-col>
-      {{match.winner}}
+      {{match?.winner?.nickname}}
     </ion-col>
  
   </ion-row>

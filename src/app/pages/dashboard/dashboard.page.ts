@@ -45,8 +45,8 @@ errorMsg =`Por favor verifique sua conexão`
       })
     this.matchService.matchWinner(this.selectedGameId).subscribe(data=>{
       console.log(data)    
-      this.matchs=data[0]
-      this.totalMatchs =data[1]
+      this.matchs=data
+      this.totalMatchs =data.length
     },
     
         (err) => {
@@ -65,8 +65,8 @@ errorMsg =`Por favor verifique sua conexão`
     console.log(this.selectedGameId,event)
     this.matchService.matchWinner(this.selectedGameId).subscribe(data=>{
       console.log(data)    
-      this.matchs=data[0]
-      this.totalMatchs =data[1]
+      this.matchs=data
+      this.totalMatchs =data.length
     },
     
     (err) => {

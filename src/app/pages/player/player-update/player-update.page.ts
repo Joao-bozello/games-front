@@ -46,6 +46,7 @@ export class PlayerUpdatePage implements OnInit {
     const id = this.route.snapshot.paramMap.get('id')!;
     this.playerService.readById(id).subscribe(
       (player) => {
+        console.log(player)
         this.playerForm.setValue(player);
         this.player = player;
         this.loading.dismiss();

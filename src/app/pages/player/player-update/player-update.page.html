@@ -12,6 +12,10 @@
     <form [formGroup]="playerForm">
       <ion-item>
         <ion-label>Nickname: </ion-label>
+        <ion-input  minlenght="8"   formControlName="id" [disabled]="true"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Nickname: </ion-label>
         <ion-input  minlenght="8"   formControlName="nickname"></ion-input>
       </ion-item>
       <ion-item>

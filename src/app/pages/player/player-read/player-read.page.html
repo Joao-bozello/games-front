@@ -44,6 +44,6 @@
 <ion-alert
   [isOpen]="isAlertOpen"
   header="Alerta"
-  message="Falha ao retornar os jogadores"
+  message="{{errorMsg}}"
   (didDismiss)="setOpen(false)"
 ></ion-alert>
